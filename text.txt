@@ -1,0 +1,11 @@
+day:// 24/9/2024
++ ApiKey in router: cung cap ApiKey unique , truy cap vao dau + version tu ngay nao den ngay nao
++ package:
+  + morgan: in ra log khi chay req
+    + dev, combined, common, short, tiny
+  + helmet: bao mat thong tin
+  + compression: giam dung luong data tu res
++ connect mongo; in dbs
++ check connect mongo:
++ khong can dong connect lien tuc trong mongosee vi mongoosee su dung pool
++ pool size: so luong ket noi , neu user vuot qua pool size, no se khong vuot qua va se xep hang doi cac yeu cau
