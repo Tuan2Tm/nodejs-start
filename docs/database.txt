@@ -1,0 +1,21 @@
+// my sql
+
+without 2nf : tách những thứ không liên quan đến khóa chính ra thành 1 bảng khác
+1nf:
+
+** so sánh mongoDb và MySql
+- các dự án lớn thường sử dụng interface
+- lợi ích dùng mongodb: các job vận chuyển phát nhanh logistic dùng mongodb, cho phép xây dựng với chi phí thấp hơn dễ  bảo trì
+
+--- tiêu chí chọn mongo
+
+- ít transaction , thường xuyên thay đổi model ,
+- qps cao 2000 - 3000 req/secound
+- dữ liệu lưu trữ lớn như iot
+- team ít người dự án nhanh
+- sẵn sàng cao
+- truy vấn location, và tìm kiếm số lượng lớn
+- nested model: dữ liệu lồng nhau
+
+
+--- tối ưu hóa truy vấn mysql
