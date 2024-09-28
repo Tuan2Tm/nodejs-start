@@ -1,7 +1,7 @@
 // my sql
 
 without 2nf : tách những thứ không liên quan đến khóa chính ra thành 1 bảng khác
-1nf:
+3nf:
 
 ** so sánh mongoDb và MySql
 - các dự án lớn thường sử dụng interface

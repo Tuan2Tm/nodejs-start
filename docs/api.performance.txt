@@ -1,0 +1,8 @@
+1: cache
+  + redis:
+2: io non-blocking thuc hien nhieu tac vu trong 1 luong
+3: tranh n + 1: can lay n du lieu tu cac bang lien quan,
+4: pool connect:
+5: payload JSON:
+6: phan trang hieu qua, toi uwu:
+8: reqestId log:
