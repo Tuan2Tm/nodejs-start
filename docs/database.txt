@@ -19,3 +19,4 @@ without 2nf : tách những thứ không liên quan đến khóa chính ra thàn
 
 
 --- tối ưu hóa truy vấn mysql
+

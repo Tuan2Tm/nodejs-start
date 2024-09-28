@@ -1,0 +1,63 @@
+--- kiểu dữ liệu redis: string, list, set, sorted set, hash, Bitmaps, HyperLogLog, Streams
+String: Chuỗi đơn giản.
+List: Danh sách các chuỗi theo thứ tự.
+Set: Tập hợp các chuỗi không trùng lặp.
+Sorted Set: Tập hợp có sắp xếp theo điểm số.
+Hash: Bảng băm với các cặp key-value.
+Bitmap: Chuỗi bit để theo dõi trạng thái.
+HyperLogLog: Cấu trúc để ước lượng số lượng phần tử duy nhất.
+Geospatial: Lưu trữ và truy vấn dữ liệu địa lý.
+Streams: Lưu trữ luồng sự kiện theo thời gian.
+
+
+--- Kiến trúc của Redis được thiết kế để trở thành một hệ thống lưu trữ dữ liệu in-memory (trong bộ nhớ), mang lại tốc độ truy cập dữ liệu nhanh chóng.
+--- Redis sử dụng mô hình kiến trúc client-server với khả năng xử lý hàng loạt lệnh từ client và lưu trữ dữ liệu dưới dạng key-value.
+In-Memory Data Store: Lưu trữ dữ liệu trong RAM để truy cập nhanh.
+Client-Server Model: Client gửi lệnh tới Redis server và nhận kết quả.
+Persistence: Lưu trữ dữ liệu trên đĩa qua RDB hoặc AOF để đảm bảo an toàn dữ liệu.
+Replication: Hỗ trợ mô hình master-slave để phân tán và sao lưu dữ liệu.
+Sharding: Phân chia dữ liệu giữa các node để mở rộng quy mô.
+Sentinel: Giám sát và tự động failover giữa các Redis instances.
+Cluster: Giải pháp phân mảnh dữ liệu và tự động quản lý Redis trên nhiều node.
+
+
+1. Callback
+Định nghĩa: Callback là một hàm được truyền như một đối số vào một hàm khác và sẽ được thực thi sau khi một số công việc (thường là bất đồng bộ) hoàn thành.
+Cách hoạt động: Khi hàm được gọi, callback không chạy ngay lập tức mà sẽ được thêm vào hàng đợi hoặc được gọi khi công việc hoàn thành.
+
+
+2. Callback Queue
+Định nghĩa: Callback queue (hàng đợi callback) là một cấu trúc dữ liệu trong JavaScript mà chứa các hàm callback được lên lịch để thực thi sau khi stack (ngăn xếp) hiện tại rỗng.
+Điều này giúp đảm bảo rằng các hàm callback chỉ được gọi khi không có công việc nào khác đang được thực hiện.
+Cách hoạt động:
+Khi một hàm callback được lên lịch (thường thông qua các hàm như setTimeout, Promise, hoặc sự kiện), nó sẽ được thêm vào callback queue.
+Vòng lặp sự kiện (event loop) sẽ kiểm tra stack và nếu stack rỗng, nó sẽ lấy callback từ callback queue và thực thi nó.
+
+
+Callback: Là hàm được truyền vào một hàm khác để thực thi sau khi một công việc hoàn thành.
+Callback Queue: Là nơi lưu trữ các callback đã được lên lịch để thực thi sau khi ngăn xếp hiện tại rỗng. Vòng lặp sự kiện sẽ xử lý các callback trong hàng đợi này.
+
+
+----
+1. Khái Niệm IO Non-Blocking
+IO Blocking: Khi một tác vụ IO (như đọc từ tệp hoặc mạng) đang thực hiện, luồng thực thi sẽ bị tạm dừng cho đến khi tác vụ hoàn tất. Điều này có thể dẫn đến tình trạng chậm trễ và hiệu suất kém trong các ứng dụng cần xử lý nhiều kết nối hoặc yêu cầu.
+IO Non-Blocking: Ngược lại, trong IO non-blocking, luồng không bị tạm dừng trong khi chờ kết quả của tác vụ IO. Thay vào đó, nó sẽ tiếp tục thực hiện các tác vụ khác và kiểm tra kết quả của tác vụ IO khi có thể.
+2. Cách Thức Hoạt Động
+Callback: Trong mô hình này, một hàm callback sẽ được gọi khi tác vụ IO hoàn tất. Điều này cho phép ứng dụng tiếp tục xử lý các yêu cầu khác mà không bị chặn.
+Event Loop: Nhiều ngôn ngữ lập trình, như JavaScript, sử dụng event loop để quản lý các tác vụ non-blocking. Event loop sẽ theo dõi các tác vụ đang chờ và xử lý chúng khi hoàn tất.
+Promises và Async/Await: Trong JavaScript, bạn cũng có thể sử dụng promises hoặc async/await để làm việc với IO non-blocking một cách dễ dàng hơn.
+
+
+---
+
+Node.js chủ yếu là đơn luồng và tối ưu cho các tác vụ IO không đồng bộ, sử dụng work Threads
+
+
+-- flow gitlab ci
+
+stages:
+  - pull
+  - install
+  - build
+  - deploy
+
