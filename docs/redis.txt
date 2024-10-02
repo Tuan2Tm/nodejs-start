@@ -1,0 +1,77 @@
+-- start redis with docker 
+docker run --name some-redis -d redis
+
+-- run redis-cli
+docker run -it --network some-network --rm redis redis-cli -h some-redis
+connect redis cli docker: docker exec -it 'name' sh => redis-cli ||  docker exec -it some-redis redis-cli
+-- key partent: model:id
+
+-- PUB/SUB
+1. SUBSCRIBE channel ...
+2. PUBLISH channel message
+
+++ 
+
+-- Transaction Redis: tap hop cua cac lenh,
+thuc hien nhieu cmt tron 1 luc thuc hien tuan tu hoa theo thu tu 
+
+-- string redis: 3 kieu du lieu embstr, raw, int
+- SET key value
+- GET key
+- EXISTS key: ktra xem key co ton tai khong. 1-co , 0-khong 
+- STRLEN key: kiem tra do dai value cua key
+- object encoding key : kiem tra kieu du lieu string
+- DEL key: 1-ok, 2-no
+
+- multiple  set key value
+MSET key1 value1 key2 value2
+MGET key1 key2
+
+INCR key : tang gia tri number 
+INCRBY key value: tang gia tri n lan 
+DECR key: giam gia tri number
+DECRBY key value: giam gia tri n lan  
+
+- KEYS '' *: tim kiem key
+
+- set key theo thoi gian
+EXPIRE key 'number: time'
+TTL key: thoi gian het han cua key
+SET key value EX 'number: time'
+
+- SETNX key value1
+
+-- HASH: luu tru duoi dang key - values
+HSET key [field value]s
+HMSET key [field value]s
+
+HGET key [field ]s
+HMGET key [field ]s
+HGETALL key
+
+HDEL key [field value]s
+
+HLEN key
+HEXISTS key
+HINCRBY key value
+HKEYS key
+HVALS key
+ 
+-- LIST: message queue
++ LPUSH key element ...
++ LRANGE key start stop : stop = -1 get all
++ chen gia tri : RPUSH key element ...
++ xoa gia tri ben trai dau tien: LPOP key 
++ xoa gia tri theo count: LPOP key [count] 
++ xoa gia tri ben phai dau tien: RPOP key 
++ xoa gia tri theo count: RPOP key [count]
++ blocking: BLPOP key [key ...] timeout
+truong hop dat hang thi no se cache lai order va check co gia tri se duoc goi uu tien
++ LINDEX key start stop
++ LLEN key
++ LREM key start stop
++ LTRIM key start top : xoa theo vi tri
++ LSET key index element: cap nhat gia tri theo index
++ LINSERT key BEFORE | AFTER pivot element
+
+-- SET 
