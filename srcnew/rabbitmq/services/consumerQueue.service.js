@@ -17,12 +17,31 @@ const messageService = {
       const notiQueue = 'notificationQueueProcess';
       const timeExpired = 25000;
 
-      setTimeout(() => {
-        channel.consume(notiQueue, (msg) => {
+      // 1. TTL
+      // setTimeout(() => {
+      //   channel.consume(notiQueue, (msg) => {
+      //     console.log(`SEND notification:`, msg.content.toString());
+      //     channel.ack(msg);
+      //   });
+      // }, timeExpired);
+
+      // 2. LOGIC
+
+      channel.consume(notiQueue, (msg) => {
+        try {
+          const numberTest = Math.random();
+          console.log({ numberTest });
+          if (numberTest < 0.8) {
+            throw new Error('Send notification failed');
+          }
           console.log(`SEND notification:`, msg.content.toString());
           channel.ack(msg);
-        });
-      }, timeExpired);
+        } catch (error) {
+          // console.error('Send notification error', error);
+          // tham so thu 2 se day qua channel khac
+          channel.nack(msg, false, false);
+        }
+      });
     } catch (error) {
       console.log(error);
     }
