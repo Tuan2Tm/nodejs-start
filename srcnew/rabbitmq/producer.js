@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const amqp = require('amqplib');
 
 const messages = 'hello, RabbitMQ for Tuantm';
@@ -14,6 +15,7 @@ const runProducer = async () => {
     console.log(`messages send: ${messages}`);
     setTimeout(() => {
       connection.close();
+      process.exit(0);
     }, 1000);
   } catch (error) {
     console.log(error);

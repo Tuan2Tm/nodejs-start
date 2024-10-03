@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const amqp = require('amqplib');
 
 const messages = 'hello, RabbitMQ for Tuantm';
