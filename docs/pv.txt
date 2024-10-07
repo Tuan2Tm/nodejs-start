@@ -61,3 +61,5 @@ stages:
   - build
   - deploy
 
+-- bai toan nhieu connect dat don: message broker
+-> toi da 100 thi 101 khong hop le
