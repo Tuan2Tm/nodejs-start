@@ -1,0 +1,25 @@
+Set hostname
+  sudo hostnamectl set-hostname server.phenikaax.com
+  sudo nano /etc/hosts
+
+Paste to last line: 103.245.249.166 server.phenikaax.com
+Check hostname: hostname
+
+Install CyberPanel:
+  sudo apt update && sudo apt upgrade -y
+  sh <(curl https://cyberpanel.net/install.sh || wget -O - https://cyberpanel.net/install.sh)
+
+Open SMTP Ports
+  sudo apt update
+  sudo apt install ufw
+  sudo ufw allow 25
+  sudo ufw allow 587
+  sudo ufw allow 465
+  .
+  sudo ufw allow out 22
+  sudo ufw allow out 25
+  sudo ufw allow out 587
+  sudo ufw allow out 465
+  .
+  sudo ufw enable
+  sudo ufw status verbose
