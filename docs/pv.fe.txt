@@ -1,0 +1,19 @@
+1. Tóm tắt luồng middleware trong Redux Thunk:
+  - Người dùng thực hiện hành động → React component gọi action creator.
+  - Action Creator trả về một hàm (thunk) → Redux Thunk Middleware thực thi hàm đó.
+  - Middleware thực hiện các hành động đồng bộ (ví dụ: dispatch loading) và gọi API bằng axios.
+  - Axios nhận kết quả từ API và dispatch các hành động dựa trên phản hồi (thành công/thất bại).
+  - Reducer cập nhật Redux store dựa trên loại hành động.
+  - React Component tự động cập nhật dựa trên thay đổi của store.
+
+2. Sự khác biệt giữa Context API và Redux?
+  - Mục đích sử dụng:
+    + Context API: Được dùng để chia sẻ state giữa các component mà không cần phải truyền props qua nhiều cấp
+    + Redux: quản lý state toàn cục trong các ứng dụng phức tạp với nhiều nguồn dữ liệu và side effects
+  - Cách hoạt động
+    + Sử dụng khái niệm Provider để chia sẻ state đến các component con
+    + State được quản lý qua store, mọi thay đổi state được thực hiện qua actions và reducers
+
+3. DOM (Document Object Model) là một mô hình cấu trúc của các tài liệu HTML hoặc XML, thể hiện dưới dạng cây gồm các phần tử (element) và nút (node).
+
+4.

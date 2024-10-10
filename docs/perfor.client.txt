@@ -1,7 +1,0 @@
-Sử dụng kỹ thuật Code Splitting và Lazy Loading
-
-2. Tối ưu hóa các Component
-
-3. Server-side Rendering (SSR) và Static Site Generation (SSG)
-
-4. Pagination và Virtualization

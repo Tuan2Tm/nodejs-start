@@ -79,6 +79,12 @@
 
     Restart sshd: sudo systemctl restart sshd
 
+** tuong lua
+
+sudo ufw status
+
+sudo ufw allow 'Nginx Full'
+
 5. Nginx configuration
 
   Để cấu hình Nginx và SSL cho domain của bạn và trỏ ứng dụng từ cổng 3000 tới http và https, bạn cần làm theo các bước sau:
@@ -133,3 +139,34 @@
     Bây giờ, trình duyệt web sẽ hiển thị một khóa bên cạnh URL, xác nhận rằng trang web của bạn đang được bảo mật với SSL.
     Nếu bạn muốn kiểm tra cấu hình SSL của bạn, bạn có thể sử dụng công cụ như [SSL Labs' SSL Server Test](https://www.ssllabs.com/ssltest/).
     Lưu ý: Đảm bảo rằng cổng 80 và 443 trên máy chủ của bạn không bị chặn bởi bất kỳ tường lửa nào.
+
+
+================================================================
+
+pm2 start --name={tag} yarn -- start
+
+pm2 startup systemd
+coppy cau lenh dong cuoi run
+
+================================================================
+
+setup connect mongodb
+
+  + connect vps
+  + sudo nano /etc/mongod.conf
+    . update bindIp to 0.0.0.0
+    . security: authorization: enabled
+  + create user root
+    . db.createUser({
+        user: "admin-hdm",
+        pwd: "Ph3nikaaX",
+        roles: [ { role: "readWrite", db: "HDMap" } ]
+      })
+    ** roles:
+      read: Chỉ có quyền đọc dữ liệu
+      readWrite: Có quyền đọc và ghi dữ liệu.
+      userAdmin: Có quyền quản lý user cho cơ sở dữ liệu này.
+      dbOwner: là quyền quản lý toàn bộ cơ sở dữ liệu my_database
+
+  + sudo systemctl restart mongod
+  + mongo -u "root" -p "your_password_here" --authenticationDatabase "admin"
