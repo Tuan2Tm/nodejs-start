@@ -17,3 +17,19 @@ rabbitmqctl change_password guest 12345
 
  { durable: true } tồn tại khi máy chủ bật lại
 await channel.assertQueue(queueName, { durable: true });
+
+// Function to count total messages in a queue
+async function countTotalMessages(channel, queueName) {
+  try {
+    const queueInfo = await channel.assertQueue(queueName, { durable: true });
+    return queueInfo.messageCount;
+  } catch (error) {
+    console.error(`Error counting messages in queue ${queueName}:`, error);
+    return 0;
+  }
+}
+
+// Usage example
+const queueName = 'my_queue';
+const totalMessages = await countTotalMessages(channel, queueName);
+console.log(`Total messages in ${queueName}: ${totalMessages}`);
