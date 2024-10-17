@@ -142,14 +142,15 @@ sudo ufw allow 'Nginx Full'
 
 
 ================================================================
-deploy fe
+-- start server: pm2 start ecosystem.config.js --no-daemon
+
+* deploy fe
 
 1. Clone project
 2. Install dependency
 3. Build project
 4. Run project with yarn start
-5. pm2 start --name={tag} yarn -- start || start fe pm2
-
+5.   start --name={tag} yarn -- start || start fe pm2
 
 pm2 save
 pm2 startup
