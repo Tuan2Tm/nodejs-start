@@ -142,11 +142,19 @@ sudo ufw allow 'Nginx Full'
 
 
 ================================================================
+deploy fe
 
-pm2 start --name={tag} yarn -- start
+1. Clone project
+2. Install dependency
+3. Build project
+4. Run project with yarn start
+5. pm2 start --name={tag} yarn -- start || start fe pm2
 
-pm2 startup systemd
-coppy cau lenh dong cuoi run
+
+pm2 save
+pm2 startup
+
+coppy cau lenh dong cuoi || Cái này sẽ tạo một đơn vị systemd giúp PM2 chạy trên user của bạn mỗi khi khởi động. Để kiểm tra trạng thái của đơn vị systemd mới tạo, sử dụng câu lệnh dưới
 
 ================================================================
 

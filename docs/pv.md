@@ -21,7 +21,9 @@
 
 - IO Non-Blocking: trong IO non-blocking, luồng không bị tạm dừng trong khi chờ kết quả của tác vụ IO. Thay vào đó, nó sẽ tiếp tục thực hiện các tác vụ khác và kiểm tra kết quả của tác vụ IO khi có thể.
 
-- Callback: Trong mô hình này, một hàm callback sẽ được gọi khi tác vụ IO hoàn tất. Điều này cho phép ứng dụng tiếp tục xử lý các yêu cầu khác mà không bị chặn.
+- Callback là một hàm được truyền vào một hàm khác như một đối số và sẽ được gọi sau khi hàm đó hoàn thành công việc.
+
+- Callback Queue (hàng đợi callback) là một hàng đợi lưu trữ các hàm callback sẽ được thực thi sau khi các tác vụ không đồng bộ (như I/O, setTimeout, hay các sự kiện) hoàn thành. Khi một tác vụ không đồng bộ hoàn thành, callback tương ứng của nó sẽ được đẩy vào callback queue và sau đó được thực thi bởi Event Loop khi call stack (ngăn xếp lời gọi) rỗng.
 
 - Promises và Async/Await: Trong JavaScript, bạn cũng có thể sử dụng promises hoặc async/await để làm việc với IO non-blocking một cách dễ dàng hơn.
 
