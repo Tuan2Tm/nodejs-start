@@ -27,13 +27,33 @@
 
 - Promises và Async/Await: Trong JavaScript, bạn cũng có thể sử dụng promises hoặc async/await để làm việc với IO non-blocking một cách dễ dàng hơn.
 
-### Streams, Buffer, Middleware
+### Các phương pháp tối ưu hệ thống backend
+
+1. Tối ưu hóa cơ sở dữ liệu
+
+- Sử dụng indexs
+
+  - Mục đích: Tăng tốc độ truy vấn cơ sở dữ liệu bằng cách lập chỉ mục các cột được tìm kiếm thường xuyên.
+  - Lưu ý: Tránh lập quá nhiều index vì điều này có thể làm giảm hiệu suất khi thực hiện ghi dữ liệu (INSERT/UPDATE/DELETE).
+
+- Tối ưu hóa truy vấn
+- Sharding và Partitioning
+
+  - Sharding: Phân chia dữ liệu thành các phần nhỏ để lưu trữ trên nhiều cơ sở dữ liệu hoặc server khác nhau.
+  - Partitioning: Phân chia một bảng lớn thành các phần nhỏ hơn để tăng tốc độ truy vấn.
+
+- Load Balancer: là một hệ thống hoặc kỹ thuật phân phối đều lưu lượng truy cập
+- Message Queue: Chuyển các tác vụ nặng (như gửi email, xử lý file, v.v.) vào hàng đợi để thực thi không đồng bộ
+
+### Streams, Buffer, Middleware, Event emitter
 
 - Streams: Làm việc với dữ liệu không hoàn chỉnh (chunks). Có bốn loại streams: Readable (dữ liệu có thể đọc), Writable (dữ liệu có thể ghi), Duplex (vừa đọc vừa ghi), và Transform (dữ liệu được chuyển đổi trong quá trình stream).
 
 - Buffer: Là một không gian bộ nhớ tạm thời chứa dữ liệu nhị phân. Node.js sử dụng Buffer để xử lý dữ liệu I/O một cách hiệu quả.
 
 - Middleware: Là hàm trung gian xử lý yêu cầu và phản hồi giữa client và server. Mỗi middleware có thể thay đổi yêu cầu hoặc phản hồi, hoặc kết thúc chuỗi xử lý. Nó giúp kiểm soát các thao tác như xác thực, ghi log, và xử lý lỗi. 4. tham tri: value type: string number boolean, bigInt, symbol, undefined, null; tham chieu: Reference Types: object, array, func
+
+- Event emitter: Một đối tượng cho phép các đối tượng khác đăng ký để lắng nghe các sự kiện.
 
 ### Tại sao chúng ta cần đánh index trong MongoDB và MySQL?
 
