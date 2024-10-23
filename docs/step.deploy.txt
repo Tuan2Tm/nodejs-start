@@ -150,7 +150,8 @@ sudo ufw allow 'Nginx Full'
 2. Install dependency
 3. Build project
 4. Run project with yarn start
-5.   start --name={tag} yarn -- start || start fe pm2
+5. pm2 start --name={tag} yarn -- start || start fe pm2
+6. pm2 serve dist port --name={tag}
 
 pm2 save
 pm2 startup

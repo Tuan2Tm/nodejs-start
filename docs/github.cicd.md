@@ -1,0 +1,3 @@
+- tạo actions trong github
+- tạo secrets trong github
+- tạo workflow trong github
