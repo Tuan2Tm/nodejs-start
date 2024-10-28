@@ -1,5 +1,5 @@
 -- start redis with docker 
-docker run --name some-redis -d redis
+docker run -d --name some-redis -p 6379:6379 -p 8001:8001 redis
 
 -- run redis-cli
 docker run -it --network some-network --rm redis redis-cli -h some-redis
