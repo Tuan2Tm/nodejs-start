@@ -5,7 +5,7 @@ docker run -d --name rabbitMQ -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 
 docker exec -it rabbitMQ bash
 
-docker run -d --name some-mysql -e MYSQL_ROOT_PASSWORD=123456@ -p 3306:3306 -d mysql:8.1
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=123456@ -p 3306:3306 -d mysql:8.1
 ```
 
 ### update password
