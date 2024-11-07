@@ -9,3 +9,26 @@ day:// 24/9/2024
 + check connect mongo:
 + khong can dong connect lien tuc trong mongosee vi mongoosee su dung pool
 + pool size: so luong ket noi , neu user vuot qua pool size, no se khong vuot qua va se xep hang doi cac yeu cau
+
+
+sudo nano /usr/local/bin/cursor
+
+#!/bin/bash
+
+cursor_app_path=/opt
+cursor_app_name=cursor.appimage
+cursor_complete_app_path="$cursor_app_path/$cursor_app_name"
+
+cursor() {
+  file_or_folder_path=$1
+  if [ -d "$file_or_folder_path" ] || [ -f "$file_or_folder_path" ]; then
+    "$cursor_complete_app_path" "$file_or_folder_path" </dev/null &>/dev/null &
+  else
+    echo -e "\e[1;31m\u26A0  ERROR: Invalid path. Please provide a valid file or directory path.\e[0m"
+  fi
+}
+
+# Call the function
+cursor "$@"
+
+sudo chmod +x /usr/local/bin/cursor
