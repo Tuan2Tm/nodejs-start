@@ -20,7 +20,7 @@ cursor_app_name=cursor.appimage
 cursor_complete_app_path="$cursor_app_path/$cursor_app_name"
 
 cursor() {
-  file_or_folder_path=$1
+  file_or_folder_path="${1:-.}"
   if [ -d "$file_or_folder_path" ] || [ -f "$file_or_folder_path" ]; then
     "$cursor_complete_app_path" "$file_or_folder_path" </dev/null &>/dev/null &
   else
