@@ -1,0 +1,54 @@
+version: '3.9'
+
+services:
+  gateway:
+    build:
+      context: ./gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - auth-service
+      - user-service
+      - notification-service
+      - order-service
+    environment:
+      - REDIS_HOST=redis
+      - MQTT_BROKER=mqtt-broker
+
+  auth-service:
+    build:
+      context: ./services/auth-service
+    ports:
+      - "3001:3001"
+    environment:
+      - REDIS_HOST=redis
+
+  user-service:
+    build:
+      context: ./services/user-service
+    ports:
+      - "3002:3002"
+
+  notification-service:
+    build:
+      context: ./services/notification-service
+    ports:
+      - "3003:3003"
+    environment:
+      - MQTT_BROKER=mqtt-broker
+
+  order-service:
+    build:
+      context: ./services/order-service
+    ports:
+      - "3004:3004"
+
+  redis:
+    image: redis:7.0
+    ports:
+      - "6379:6379"
+
+  mqtt-broker:
+    image: eclipse-mosquitto:2.0
+    ports:
+      - "1883:1883"
