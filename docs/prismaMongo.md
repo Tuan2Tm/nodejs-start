@@ -27,6 +27,8 @@ docker run -d \
   mongo:latest \
   --replSet rs0 \
   --bind_ip_all
+
+docker run -d --name mongo --restart unless-stopped -p 27017:27017 --mount source=mongo-data,target=/data/db mongo:latest --replSet rs0 --bind_ip_all
 ```
 
 ### Bước 2: cài đặt replica set
